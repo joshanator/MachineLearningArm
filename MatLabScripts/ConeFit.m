@@ -1,4 +1,4 @@
-function [MinX, MinY, MinZ] = ConeFit(x, y, z)
+function Data = ConeFit(x, y, z)
 
 %CREATEFIT(X,Y,Z)
 %  Create a fit.
@@ -47,4 +47,5 @@ MinX = h(1).XData(row, col)
 MinY = h(1).YData(row, col)
 MinZ = h(1).ZData(row, col)
 
+Data = [MinX MinY MinZ]
 

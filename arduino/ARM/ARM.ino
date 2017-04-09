@@ -94,14 +94,14 @@ void setup()
 }
 
 void onHammer(){
-  myMotorDriver.setDrive(0,1,150);
-  myMotorDriver.setDrive(1,0,160);
+  myMotorDriver.setDrive(0,1,100);
+  myMotorDriver.setDrive(1,0,110);
   delay(350);
   myMotorDriver.setDrive(0,0,0);
   myMotorDriver.setDrive(1,0,0);
   delay(500);
-  myMotorDriver.setDrive(0,0,170);
-  myMotorDriver.setDrive(1,1,160);
+  myMotorDriver.setDrive(0,0,120);
+  myMotorDriver.setDrive(1,1,110);
   delay(380);
   myMotorDriver.setDrive(0,0,0);
   myMotorDriver.setDrive(1,0,0);

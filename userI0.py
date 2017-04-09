@@ -1,12 +1,31 @@
 from Tkinter import *
+import random
 #from pynput import ket,listener
-#from PyCmdMessenger import PyCmdMessenger
+from PyCmdMessenger import PyCmdMessenger
 import PyCmdMessenger
 import matlab.engine
 import serial
 #import sys
 #sys.exit(0)
 #import arduino
+
+pressedB = ""
+pressed = FALSE
+letter = ""
+i = 0
+x = []
+y = []
+z = []
+
+
+def main():
+    global pressedB
+    global pressed
+    global letter
+    global i
+    global x
+    global y
+    global z
 
 def find_shortest_path(graph, start, end, path=[]):
     path = path + [start]
@@ -56,25 +75,80 @@ def dist(start, end):
     return len(find_shortest_path(graph, start, end))
 
 
+def keyPressed(e):
+    print e.char
+    global pressedB
+    global pressed
+    pressedB = str(e.char)
+    pressedB = pressedB.upper()
+    pressed = FALSE
+    if(i!=0):
+        global z
+        global letter
+        z.append(dist(letter, pressedB))
+    if(i>=3):
+        normalCommand()
+    else:
+        randomCommand()
+
+
+
+
+def randomCommand():
+    if(i==0):
+        main()
+        global letter
+        letter = input.get()
+        letter = letter.upper()
+        print(letter)
+
+    global x
+    global y
+    x.append(random.randrange(250, 500))
+    y.append(random.randrange(200, 700))
+    pressed = TRUE
+
+    c.send("Rotate", x[i])
+    c.send("Wrist", y[i])
+    c.send("Hammer")
+    c.send("Return", y[i], x[i])
+
+    global i
+    i += 1
+
+
+
+def normalCommand():
+    eng = matlab.engine.connect_matlab()
+    eng.cd(r'C:\Users\Joshua Peterson\Documents\GitHub\MachineLearningArm\MatLabScripts')
+    out = eng.ConeFit(matlab.double(x), matlab.double(y), matlab.double(z))
+    print(out)
+    global i
+    i += 1
+
+    xout = 
+
+
+
+
+    #c.send("Rotate" )
+    #c.send("Wrist", )
+    #c.send("Hammer")
+    #c.send("Return",  )
+
+
+
+
 
 #future = matlab.engine.connect_matlab(async=True)
-eng = matlab.engine.connect_matlab()
-eng.cd(r'C:\Users\Joshua Peterson\Documents\GitHub\MachineLearningArm\MatLabScripts')
-x = matlab.double([1,2,3])
-y = matlab.double([1,2,3])
-z = matlab.double([1,2,3])
-out = eng.ConeFit(x,y,x)
-print(out)
-
-
+main()
 
 board = PyCmdMessenger.ArduinoBoard("COM4",baud_rate=9600)
 commands = [["Wrist","i"],["Hammer",""],["Rotate","i"],["Return","ii"]]
 c = PyCmdMessenger.CmdMessenger(board,commands)
 
 root = Tk()
-
-letter = ""
+root.bind('<KeyRelease>', keyPressed)
 
 label = Label(root, text="test a letter")
 label.pack(side = LEFT)
@@ -82,25 +156,9 @@ label.pack(side = LEFT)
 input = Entry()
 input.pack(side = RIGHT)
 
-def submitLetter():
-    letter = input.get()
-    print(letter)
-    
+#submit = Button(text="submit", command=buttonPressed)
+#submit.pack()
 
-    c.send("Rotate",500)
-    c.send("Wrist", 00)
-    c.send("Hammer")
-    c.send("Return",00,500)
-    #while TRUE:
-
-
-submit = Button(text = "submit", command = submitLetter)
-submit.pack()
-
-def keyPressed(e):
-    print e.char
-
-root.bind('<KeyRelease>',keyPressed)
 
 root.mainloop()
 
