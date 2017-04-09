@@ -94,15 +94,15 @@ void setup()
 }
 
 void onHammer(){
-  myMotorDriver.setDrive(0,1,200);
-  myMotorDriver.setDrive(1,0,210);
-  delay(250);
+  myMotorDriver.setDrive(0,1,150);
+  myMotorDriver.setDrive(1,0,160);
+  delay(350);
   myMotorDriver.setDrive(0,0,0);
   myMotorDriver.setDrive(1,0,0);
   delay(500);
-  myMotorDriver.setDrive(0,0,220);
-  myMotorDriver.setDrive(1,1,210);
-  delay(280);
+  myMotorDriver.setDrive(0,0,170);
+  myMotorDriver.setDrive(1,1,160);
+  delay(380);
   myMotorDriver.setDrive(0,0,0);
   myMotorDriver.setDrive(1,0,0);
 }
@@ -135,33 +135,21 @@ void onReturn(void){
   delay(angle);
   myMotorDriver.setDrive(1,0,0);
 
-  if(angle2>0){
-    myMotorDriver.setDrive(2,1,50);
+
+    myMotorDriver.setDrive(2,0,75);
 //    while (count<abs(angle)/2){
 //      if(digitalRead(4) == 1){
 //        count++;
 //      }
 //    }
-    delay(angle2);
+    delay(angle2+30);
     myMotorDriver.setDrive(2,0,0);
-  }
-  else{
-    myMotorDriver.setDrive(2,0,50);
-//    while (count<angle/2){
-//      if(digitalRead(4) == 1){
-//        count++;
-//      }
-//    }
-    delay(angle2);
-    myMotorDriver.setDrive(2,0,0);
-  }
 }
 
 void onRotate(void){
   int angle = c.readBinArg<int>();
   int count=0;
-  if(angle<0){
-    myMotorDriver.setDrive(2,1,50);
+    myMotorDriver.setDrive(2,1,75);
 //    while (count<abs(angle)/2){
 //      if(digitalRead(4) == 1){
 //        count++;
@@ -169,17 +157,7 @@ void onRotate(void){
 //    }
   delay(angle);
     myMotorDriver.setDrive(2,0,0);
-  }
-  else{
-    myMotorDriver.setDrive(2,0,50);
-//    while (count<angle/2){
-//      if(digitalRead(4) == 1){
-//        count++;
-//      }
-//    }
-    delay(angle);
-    myMotorDriver.setDrive(2,0,0);
-  }
+  
 }
 
 void loop()
