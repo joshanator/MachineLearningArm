@@ -29,7 +29,7 @@ opts.StartPoint = [0.0357116785741896 0.849129305868777 0.933993247757551];
 [fitresult, gof] = fit( [xData, yData], zData, ft, opts );
 
 % Plot fit with data.
-figure( 'Name', 'untitled fit 1' );
+%figure( 'Name', 'untitled fit 1' );
 h = plot( fitresult, [xData, yData], zData );
 legend( h, 'untitled fit 1', 'z vs. x, y', 'Location', 'NorthEast' );
 % Label axes
