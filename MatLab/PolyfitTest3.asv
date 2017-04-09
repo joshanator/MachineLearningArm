@@ -35,5 +35,6 @@ zlabel z1
 grid on
 view( -15.5, -1.2 );
 
+coeffvals = coeffvalues(fi
 
 
