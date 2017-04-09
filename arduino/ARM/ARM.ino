@@ -7,7 +7,7 @@
 
 #include <Arduino.h>
 #include <stdint.h>
-#include <CmdMessenger.h>
+#include "CmdMessenger.h"
 #include "SCMD.h"
 #include "SCMD_config.h" //Contains #defines for common SCMD register names and values
 #include "Wire.h"
@@ -107,7 +107,8 @@ void onHammer(){
   myMotorDriver.setDrive(1,0,0);
 }
 
-void onWrist(int angle){
+void onWrist(void){
+  int angle = c.readBinArg<int>();
   //int count=0;
   myMotorDriver.setDrive(1,0,50);
 //  while (count<angle/2){
@@ -121,7 +122,9 @@ void onWrist(int angle){
   myMotorDriver.setDrive(1,0,0);
 }
 
-void onReturn(int angle, int angle2){
+void onReturn(void){
+  int angle = c.readBinArg<int>();
+  int angle2 = c.readBinArg<int>();
   //int count=0;
   myMotorDriver.setDrive(1,1,80);
 //  while (count<angle/2){
@@ -154,7 +157,8 @@ void onReturn(int angle, int angle2){
   }
 }
 
-void onRotate(int angle){
+void onRotate(void){
+  int angle = c.readBinArg<int>();
   int count=0;
   if(angle<0){
     myMotorDriver.setDrive(2,1,50);
