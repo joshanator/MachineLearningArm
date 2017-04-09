@@ -1,3 +1,4 @@
+
 //This example drives a robot in left and right arcs, driving in an overall wiggly course.
 //  It demonstrates the variable control abilities. When used with a RedBot chassis,
 //  each turn is about 90 degrees per drive.
@@ -6,24 +7,44 @@
 
 #include <Arduino.h>
 #include <stdint.h>
+#include <CmdMessenger.h>
 #include "SCMD.h"
 #include "SCMD_config.h" //Contains #defines for common SCMD register names and values
 #include "Wire.h"
 
 SCMD myMotorDriver; //This creates the main object of one motor driver and connected slaves.
 
-int input[2];
+//int input[2] = {300, 200};
+
+enum{
+  Wrist,
+  Hammer,
+  Rotate,
+  Return,
+};
+
+CmdMessenger c = CmdMessenger(Serial,',',';','/');
+
+void attach_callbacks(){
+  c.attach(Wrist,onWrist);
+  c.attach(Hammer,onHammer);
+  c.attach(Rotate,onRotate);
+  c.attach(Return,onReturn);
+}
 
 void setup()
 {
-  pinMode(8, INPUT_PULLUP); //Use to halt motor movement (ground)
+
+  attach_callbacks();
+  
+  //pinMode(8, INPUT_PULLUP); //Use to halt motor movement (ground)
 
   pinMode(2, INPUT);
   pinMode(3, INPUT);
   pinMode(4, INPUT);
 
   Serial.begin(9600);
-  Serial.println("Starting sketch.");
+  //Serial.println("Starting sketch.");
 
   //***** Configure the Motor Driver's Settings *****//
   //  .commInter face can be I2C_MODE or SPI_MODE
@@ -39,16 +60,16 @@ void setup()
   //*****initialize the driver get wait for idle*****//
   while ( myMotorDriver.begin() != 0xA9 ) //Wait until a valid ID word is returned
   {
-    Serial.println( "ID mismatch, trying again" );
+    //Serial.println( "ID mismatch, trying again" );
     delay(500);
   }
-  Serial.println( "ID matches 0xA9" );
+  //Serial.println( "ID matches 0xA9" );
 
   //  Check to make sure the driver is done looking for slaves before beginning
-  Serial.print("Waiting for enumeration...");
+  //Serial.print("Waiting for enumeration...");
   while ( myMotorDriver.ready() == false );
-  Serial.println("Done.");
-  Serial.println();
+  //Serial.println("Done.");
+  //Serial.println();
 
   delay(2500);
 
@@ -72,110 +93,125 @@ void setup()
 
 }
 
-void Hammer(){
-  myMotorDriver.setDrive(0,0,150);
-  myMotorDriver.setDrive(1,0,150);
-  delay(200);
+void onHammer(){
+  myMotorDriver.setDrive(0,1,200);
+  myMotorDriver.setDrive(1,0,210);
+  delay(250);
   myMotorDriver.setDrive(0,0,0);
   myMotorDriver.setDrive(1,0,0);
   delay(500);
-  myMotorDriver.setDrive(0,1,150);
-  myMotorDriver.setDrive(1,1,150);
-  delay(220);
+  myMotorDriver.setDrive(0,0,220);
+  myMotorDriver.setDrive(1,1,210);
+  delay(280);
   myMotorDriver.setDrive(0,0,0);
   myMotorDriver.setDrive(1,0,0);
 }
 
-void Wrist(int angle){
-  int count=0;
+void onWrist(int angle){
+  //int count=0;
   myMotorDriver.setDrive(1,0,50);
-  while (count<angle/2){
-    if(digitalRead(2) == 1){
-      count++;
-    }
-  }
+//  while (count<angle/2){
+//    //Serial.println(digitalRead(2));
+//    for(int i=0; i; i++){
+//      pulseIn(2, HIGH);
+//      Serial.println(i);
+//    }
+//  }
+  delay(angle);
   myMotorDriver.setDrive(1,0,0);
 }
 
-void Return(int angle, int angle2){
-  int count=0;
-  myMotorDriver.setDrive(1,1,50);
-  while (count<angle/2){
-    if(digitalRead(2) == 1){
-      count++;
-    }
-  }
+void onReturn(int angle, int angle2){
+  //int count=0;
+  myMotorDriver.setDrive(1,1,80);
+//  while (count<angle/2){
+//    if(digitalRead(3) == 1){
+//      count++;
+//    }
+//  }
+  delay(angle);
   myMotorDriver.setDrive(1,0,0);
 
-  if(angle>0){
+  if(angle2>0){
     myMotorDriver.setDrive(2,1,50);
-    while (count<abs(angle)/2){
-      if(digitalRead(4) == 1){
-        count++;
-      }
-    }
+//    while (count<abs(angle)/2){
+//      if(digitalRead(4) == 1){
+//        count++;
+//      }
+//    }
+    delay(angle2);
     myMotorDriver.setDrive(2,0,0);
   }
   else{
     myMotorDriver.setDrive(2,0,50);
-    while (count<angle/2){
-      if(digitalRead(4) == 1){
-        count++;
-      }
-    }
+//    while (count<angle/2){
+//      if(digitalRead(4) == 1){
+//        count++;
+//      }
+//    }
+    delay(angle2);
     myMotorDriver.setDrive(2,0,0);
   }
 }
 
-void Rotate(int angle){
+void onRotate(int angle){
   int count=0;
   if(angle<0){
     myMotorDriver.setDrive(2,1,50);
-    while (count<abs(angle)/2){
-      if(digitalRead(4) == 1){
-        count++;
-      }
-    }
+//    while (count<abs(angle)/2){
+//      if(digitalRead(4) == 1){
+//        count++;
+//      }
+//    }
+  delay(angle);
     myMotorDriver.setDrive(2,0,0);
   }
   else{
     myMotorDriver.setDrive(2,0,50);
-    while (count<angle/2){
-      if(digitalRead(4) == 1){
-        count++;
-      }
-    }
+//    while (count<angle/2){
+//      if(digitalRead(4) == 1){
+//        count++;
+//      }
+//    }
+    delay(angle);
     myMotorDriver.setDrive(2,0,0);
   }
 }
 
 void loop()
 {
+
+  c.feedinSerialData();
+  
   //pass setDrive() a motor number, direction as 0(call 0 forward) or 1, and level from 0 to 255
  
-  while (digitalRead(8) == 0); //Hold if jumper is placed between pin 8 and ground
+//  while (digitalRead(8) == 0); //Hold if jumper is placed between pin 8 and ground
 
   //***** Operate the Motor Driver *****//
   //  This walks through all 34 motor positions driving them forward and back.
   //  It uses .setDrive( motorNum, direction, level ) to drive the motors.
 
-//  myMotorDriver.setDrive( Arm, 1, 50); 
-//  myMotorDriver.setDrive( Wrist, 1, 20);
-//  delay(200);
-//  myMotorDriver.setDrive( Arm, 0, 0); 
-//  myMotorDriver.setDrive( Wrist, 0, 0);
+
+//  input[0] = (int) Serial.parseInt();
+//  delay(10);
+//  input[1] = (int) Serial.parseInt();
+//
+//  Wrist(input[0]);
+//  Serial.println("Wrist");
+//  delay(100);
+//  Rotate(input[1]);
+//  Serial.println("Rotate");
+//  delay(100);
+//  Hammer();
+//  Serial.println("Hammer");
+//  delay(100);
+//  Return(input[0],input[1]);
+//  Serial.println("Return");
 //  delay(1000);
-//  myMotorDriver.setDrive( Arm, 0, 20); 
-//  myMotorDriver.setDrive( Wrist, 0, 20);
-//  delay(200);
-//  myMotorDriver.setDrive( 2, 0, 200);
 
-  //SOMEHOW GET DATA INTO input[]
-
-  Wrist(input[1]);
-  Rotate(input[2]);
-  Hammer();
-  Return(input[1],input[2]);
-  delay(500);
+//myMotorDriver.setDrive(2,1,100);
+//delay(500);
+//myMotorDriver.setDrive(2,0,0);
+//delay(500);
 }
 
