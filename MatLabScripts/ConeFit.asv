@@ -50,7 +50,7 @@ MinZ = h(1).ZData(row, col)
 hold on
 plot3(MinX,MinY,MinZ,'ro')
 
-txt1 = [' ' num2str(MinX) ', '  num2str(MinY) ', ' num2str(MinY)]
+txt1=num2str(MinX) = ", " 
 
-text(MinX,MinY,MinZ, txt1)
+text(MinX,MinY,MinZ, 
 hold off
