@@ -84,6 +84,8 @@ input.pack(side = RIGHT)
 
 def submitLetter():
     letter = input.get()
+    print(letter)
+    
 
     c.send("Rotate",500)
     c.send("Wrist", 00)

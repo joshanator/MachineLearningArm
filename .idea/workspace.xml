@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b1f0de2-f51e-4da0-bba7-a1fcb8a992fa" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/ConeFit.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/PolyfitTest.asv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/PolyfitTest.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/PolyfitTest1.asv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/PolyfitTest1.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/PolyfitTest3.asv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/PolyfitTest3.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MatLab/linierTest.m" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MachineLearningArm.iml" afterPath="$PROJECT_DIR$/.idea/MachineLearningArm.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/arduino/ARM/ARM.ino" afterPath="$PROJECT_DIR$/arduino/ARM/ARM.ino" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userI0.py" afterPath="$PROJECT_DIR$/userI0.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +15,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/MachineLearningArm$arduino.coverage" NAME="arduino Coverage Results" MODIFIED="1491714787348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PyCmdMessenger2" />
     <SUITE FILE_PATH="coverage/MachineLearningArm$__init____2_.coverage" NAME="__init__ (2) Coverage Results" MODIFIED="1491714709286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/serial/tools" />
-    <SUITE FILE_PATH="coverage/MachineLearningArm$userI0.coverage" NAME="userI0 Coverage Results" MODIFIED="1491736933807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MachineLearningArm$userI0.coverage" NAME="userI0 Coverage Results" MODIFIED="1491737604149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MachineLearningArm$userInterface.coverage" NAME="userInterface Coverage Results" MODIFIED="1491710200979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
     <SUITE FILE_PATH="coverage/MachineLearningArm$PyCmdMessenger.coverage" NAME="PyCmdMessenger Coverage Results" MODIFIED="1491714816921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PyCmdMessenger2" />
     <SUITE FILE_PATH="coverage/MachineLearningArm$Unittests_in_MachineLearningArm.coverage" NAME="Unittests in MachineLearningArm Coverage Results" MODIFIED="1491711464258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -56,8 +45,8 @@
       <file leaf-file-name="userI0.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/userI0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+            <state relative-caret-position="1287">
+              <caret line="39" column="4" lean-forward="false" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -121,7 +110,7 @@
         <entry file="file://$PROJECT_DIR$/PyCmdMessenger/arduino.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1193">
-              <caret line="139" column="23" lean-forward="true" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+              <caret line="139" column="23" lean-forward="false" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -131,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/PyCmdMessenger/PyCmdMessenger.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3279">
-              <caret line="149" column="28" lean-forward="true" selection-start-line="149" selection-start-column="28" selection-end-line="149" selection-end-column="28" />
+              <caret line="149" column="28" lean-forward="false" selection-start-line="149" selection-start-column="28" selection-end-line="149" selection-end-column="28" />
               <folding>
                 <element signature="e#217#230#0" expanded="true" />
               </folding>
@@ -641,7 +630,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296417" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26514658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26514658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -845,7 +834,7 @@
     <entry file="file://$PROJECT_DIR$/PyCmdMessenger/arduino.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1193">
-          <caret line="139" column="23" lean-forward="true" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
+          <caret line="139" column="23" lean-forward="false" selection-start-line="139" selection-start-column="23" selection-end-line="139" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -873,7 +862,7 @@
     <entry file="file://$PROJECT_DIR$/PyCmdMessenger/PyCmdMessenger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3279">
-          <caret line="149" column="28" lean-forward="true" selection-start-line="149" selection-start-column="28" selection-end-line="149" selection-end-column="28" />
+          <caret line="149" column="28" lean-forward="false" selection-start-line="149" selection-start-column="28" selection-end-line="149" selection-end-column="28" />
           <folding>
             <element signature="e#217#230#0" expanded="true" />
           </folding>
@@ -922,8 +911,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/userI0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+        <state relative-caret-position="1287">
+          <caret line="39" column="4" lean-forward="false" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
