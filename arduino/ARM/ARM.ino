@@ -110,7 +110,7 @@ void onHammer(){
 void onWrist(void){
   int angle = c.readBinArg<int>();
   //int count=0;
-  myMotorDriver.setDrive(1,0,50);
+  myMotorDriver.setDrive(1,0,55);
 //  while (count<angle/2){
 //    //Serial.println(digitalRead(2));
 //    for(int i=0; i; i++){

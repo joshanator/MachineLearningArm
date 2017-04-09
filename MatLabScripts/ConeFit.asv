@@ -47,7 +47,7 @@ MinX = h(1).XData(row, col)
 MinY = h(1).YData(row, col)
 MinZ = h(1).ZData(row, col)
 
-Data = ((int32(MinY)*1000) + int32(MinX))
+Data = ([MinX MinY MinZ])
 hold on
 plot3(MinX,MinY,MinZ,'ro')
 

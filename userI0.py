@@ -82,7 +82,7 @@ def keyPressed(e):
     pressedB = str(e.char)
     pressedB = pressedB.upper()
     pressed = FALSE
-    if(i!=0):
+    if(i!=0 & pressedB.isdigit() != TRUE):
         global z
         global letter
         z.append(dist(letter, pressedB))
@@ -104,9 +104,36 @@ def randomCommand():
 
     global x
     global y
-    x.append(random.randrange(250, 500))
-    y.append(random.randrange(200, 700))
+    x.append(random.randrange(200, 500))
+    y.append(random.randrange(200, 650))
     pressed = TRUE
+
+    c.send("Rotate", x[i])
+    c.send("Wrist", y[i])
+    c.send("Hammer")
+    c.send("Return", y[i], x[i])
+    global i
+    i += 1
+
+
+
+def normalCommand():
+    eng = matlab.engine.connect_matlab()
+    eng.cd(r'C:\Users\Joshua Peterson\Documents\GitHub\MachineLearningArm\MatLabScripts')
+    out = eng.ConeFit(matlab.double(x), matlab.double(y), matlab.double(z))
+    print(out)
+    pressed = TRUE
+
+    minX = (out % 1000)
+    out = out - minX
+    minY = out/1000
+    print(minX)
+    print(minY)
+
+    #print(outy)
+    x.append(minX)
+    y.append(minY)
+
 
     c.send("Rotate", x[i])
     c.send("Wrist", y[i])
@@ -118,29 +145,7 @@ def randomCommand():
 
 
 
-def normalCommand():
-    eng = matlab.engine.connect_matlab()
-    eng.cd(r'C:\Users\Joshua Peterson\Documents\GitHub\MachineLearningArm\MatLabScripts')
-    out = eng.ConeFit(matlab.double(x), matlab.double(y), matlab.double(z))
-    print(out)
-    global i
-    i += 1
-
-    xout = 
-
-
-
-
-    #c.send("Rotate" )
-    #c.send("Wrist", )
-    #c.send("Hammer")
-    #c.send("Return",  )
-
-
-
-
-
-#future = matlab.engine.connect_matlab(async=True)
+#future = matlab.engine.8uuurrrrrrrrrrrrrrrrrrrrrrrrrrconnect_matlab(async=True)
 main()
 
 board = PyCmdMessenger.ArduinoBoard("COM4",baud_rate=9600)
@@ -158,7 +163,6 @@ input.pack(side = RIGHT)
 
 #submit = Button(text="submit", command=buttonPressed)
 #submit.pack()
-
 
 root.mainloop()
 
