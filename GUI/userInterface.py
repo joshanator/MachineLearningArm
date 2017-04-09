@@ -1,5 +1,10 @@
 from tkinter import *
 #from pynput import ket,listener
+import PyCmdMessenger
+
+arduino = PyCmdMessenger.ArduinoBoard("/dev/ttyACM0",baud_rate=9600)
+commands = [[]]
+c = PyCmdMessenger.CmdMessenger(arduino,commands)
 
 root = Tk()
 
