@@ -8,6 +8,54 @@ import serial
 #sys.exit(0)
 #import arduino
 
+def find_shortest_path(graph, start, end, path=[]):
+    path = path + [start]
+    if start == end:
+        return path
+    if not graph.has_key(start):
+        return None
+    shortest = None
+    for node in graph[start]:
+        if node not in path:
+            newpath = find_shortest_path(graph, node, end, path)
+            if newpath:
+                if not shortest or len(newpath) < len(shortest):
+                    shortest = newpath
+    return shortest
+
+
+def dist(start, end):
+    graph = {
+        'Q': ['A', 'W'],
+        'W': ['Q', 'S', 'E'],
+        'E': ['W', 'D', 'R'],
+        'R': ['E', 'F', 'T'],
+        'T': ['R', 'G', 'Y'],
+        'Y': ['T', 'H', 'U'],
+        'U': ['Y', 'J', 'I'],
+        'I': ['U', 'K', 'O'],
+        'O': ['I', 'L', 'P'],
+        'P': ['O', ';', '['],
+        'A': ['T', 'H', 'U'],
+        'S': ['A', 'X', 'D', 'W'],
+        'D': ['S', 'C', 'F', 'E'],
+        'F': ['D', 'V', 'G', 'R'],
+        'G': ['F', 'T', 'H', 'V'],
+        'H': ['Y', 'G', 'B', 'J'],
+        'J': ['H', 'N', 'K', 'U'],
+        'K': ['J', 'M', 'L', 'I'],
+        'L': ['K', 'O'],
+        'Z': ['X', 'A'],
+        'X': ['Z', 'C', 'S'],
+        'C': ['X', 'V', 'D'],
+        'V': ['C', 'B', 'F'],
+        'B': ['V', 'N', 'G'],
+        'N': ['B', 'M', 'H'],
+        'M': ['N', 'J']
+    }
+    return len(find_shortest_path(graph, start, end))
+
+
 
 #future = matlab.engine.connect_matlab(async=True)
 eng = matlab.engine.connect_matlab()
@@ -53,6 +101,5 @@ def keyPressed(e):
 root.bind('<KeyRelease>',keyPressed)
 
 root.mainloop()
-
 
 
